@@ -15,7 +15,7 @@ def print_Hired_details():
     Label(main_window, font=("Helvetica 10 bold"), text="Item Hired").grid(column=2, row=7)
     Label(main_window, font=("Helvetica 10 bold"), text="Receipt Number").grid(column=3, row=7)
     Label(main_window, font=("Helvetica 10 bold"), text="Items Number").grid(column=4, row=7)
-    #add each item in the list into its own row
+
     while name_count < counters['total_entries']:
         Label(main_window, text=name_count).grid(column=0, row=name_count + 8) 
         Label(main_window, text=(Hired_details[name_count][0])).grid(column=1, row=name_count + 8)
@@ -48,7 +48,7 @@ def check_inputs():
 def append_name():
     receipt_number = counters['receipt_number']
     Hired_details.append([entry_name.get(), entry_Hired_items.get(), receipt_number, entry_items_number.get()])
-    #clear the boxes
+    
     entry_name.delete(0, 'end')
     entry_Hired_items.set('')  # Use set() method for combobox
     entry_items_number.delete(0, 'end')
@@ -57,7 +57,7 @@ def append_name():
 
 #delete a row from the list
 def delete_row():
-    #find which row is to be deleted and delete it
+  
     receipt_to_delete = int(delete_item.get())
     for i, details in enumerate(Hired_details):
         if details[2] == receipt_to_delete:
@@ -65,7 +65,7 @@ def delete_row():
             counters['total_entries'] -= 1
             break
     delete_item.delete(0, 'end')
-    #clear the last item displayed on the GUI
+ 
     name_count = counters['name_count']
     for i in range(5):
         Label(main_window, text="          ").grid(column=i, row=name_count + 7)
@@ -84,7 +84,7 @@ def setup_buttons():
     Button(main_window, text="Delete Row", command=delete_row, width=10).grid(column=4, row=3, sticky=E)
     Label(main_window, text="               ").grid(column=2, row=0)
 
-#start the program running
+
 def main():
     #Start the GUI it up
     setup_buttons()
